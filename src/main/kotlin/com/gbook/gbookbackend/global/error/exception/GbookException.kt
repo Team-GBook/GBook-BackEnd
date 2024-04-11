@@ -1,7 +1,7 @@
 package com.gbook.gbookbackend.global.error.exception
 
 abstract class GbookException(
-        val errorCode: ErrorCode
+    private val errorCode: ErrorCode
 ) : RuntimeException() {
     val status: Int
         get() = errorCode.status

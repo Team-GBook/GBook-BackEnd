@@ -11,26 +11,28 @@ import org.springframework.security.web.SecurityFilterChain
 
 @EnableWebSecurity
 class SecurityConfig(
-        private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper
 ) {
 
     @Bean
     @Throws(Exception::class)
     protected fun securityFilterChain(http: HttpSecurity): SecurityFilterChain? {
         return http
-                .csrf().disable()
-                .formLogin().disable()
-                .cors()
+            .csrf().disable()
+            .formLogin().disable()
+            .cors()
 
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-                .and()
-                .authorizeHttpRequests()
-                .antMatchers("/**").permitAll()
-                .anyRequest().permitAll()
-                .and().build()
+            .and()
+            .authorizeHttpRequests()
+            .antMatchers("/**").permitAll()
+            .anyRequest().permitAll()
+
+            .and().apply(FilterConfig(objectMapper))
+            .and().build()
     }
 
     @Bean
