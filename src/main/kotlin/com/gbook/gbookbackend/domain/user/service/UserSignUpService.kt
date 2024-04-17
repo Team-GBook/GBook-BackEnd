@@ -13,9 +13,7 @@ class UserSignUpService(
         private val passwordEncoder: PasswordEncoder
 ) {
     fun execute(request: UserSignUpRequest) {
-        if (userRepository.existsByEmail(request.email)) {
-            throw AlreadyUserException
-        }
+        vaildUser(request)
         userRepository.save(
                 User(
                         email = request.email,
@@ -26,5 +24,10 @@ class UserSignUpService(
                         isCheck = false
                 )
         )
+    }
+    private fun vaildUser(request: UserSignUpRequest) {
+        if (userRepository.existsByEmail(request.email) || userRepository.existsByNickName(request.nickName)) {
+            throw AlreadyUserException
+        }
     }
 }

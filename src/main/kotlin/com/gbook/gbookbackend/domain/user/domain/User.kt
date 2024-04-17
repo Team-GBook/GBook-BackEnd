@@ -18,10 +18,10 @@ class User(
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
     val genre: Genre,
 
-    @Column(columnDefinition = "VARCHAR(2000) default ''", nullable = false)
+    @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
     val profile: String,
 
-    @Column(columnDefinition = "BIT(1) default 0", nullable = false)
+    @Column(columnDefinition = "BIT(1)", nullable = false)
     var isCheck: Boolean,
 
 ): BaseUUIDEntity()
