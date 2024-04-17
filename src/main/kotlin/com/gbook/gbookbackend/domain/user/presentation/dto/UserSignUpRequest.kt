@@ -2,6 +2,7 @@ package com.gbook.gbookbackend.domain.user.presentation.dto
 
 import com.gbook.gbookbackend.domain.user.domain.Genre
 import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
 
@@ -25,6 +26,6 @@ data class UserSignUpRequest(
         @field:Size(max = 5, message = "nick_name은 15자 이하여야 합니다.")
         var nickName: String,
 
-        @field:NotBlank(message = "genre는 Null를 허용하지 않습니다.")
+        @field:NotNull(message = "genre는 Null를 허용하지 않습니다.")
         var genre: Genre
 )
