@@ -5,6 +5,7 @@ enum class ErrorCode(
     val message: String
 ) {
     INVALID_CODE(400, "Invalid Code"),
+    INVALID_MAIL(400, "Invalid Mail"),
 
     NOT_FOUND_MAIL(404, "Not Found Mail"),
 
