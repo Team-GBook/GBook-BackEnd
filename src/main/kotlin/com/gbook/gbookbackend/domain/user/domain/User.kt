@@ -19,9 +19,5 @@ class User(
     val genre: Genre,
 
     @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
-    val profile: String,
-
-    @Column(columnDefinition = "BIT(1)", nullable = false)
-    var isCheck: Boolean,
-
+    val profile: String
 ): BaseUUIDEntity()

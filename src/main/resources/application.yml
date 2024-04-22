@@ -26,7 +26,22 @@ spring:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 5000
+          starttls:
+            enable: true
+            required: true
+
 jwt:
   secret: ${SECRET_KEY:he436dhh$^JhYHRHh5379p8t5ry655%U&^KJ%JU%U$}
-  access_exp: ${ACCESS_EXP:7200}
-  refresh_exp: ${REFRESH_EXP:86400}
+  access-exp: ${ACCESS_EXP:7200}
+  refresh-exp: ${REFRESH_EXP:86400}

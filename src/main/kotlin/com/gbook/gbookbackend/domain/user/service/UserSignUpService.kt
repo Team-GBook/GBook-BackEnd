@@ -9,23 +9,23 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserSignUpService(
-        private val userRepository: UserRepository,
-        private val passwordEncoder: PasswordEncoder
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder
 ) {
     fun execute(request: UserSignUpRequest) {
-        vaildUser(request)
+        validUser(request)
         userRepository.save(
-                User(
-                        email = request.email,
-                        password = passwordEncoder.encode(request.password),
-                        nickName = request.nickName,
-                        genre = request.genre,
-                        profile = "",
-                        isCheck = false
-                )
+            User(
+                email = request.email,
+                password = passwordEncoder.encode(request.password),
+                nickName = request.nickName,
+                genre = request.genre,
+                profile = ""
+            )
         )
     }
-    private fun vaildUser(request: UserSignUpRequest) {
+
+    private fun validUser(request: UserSignUpRequest) {
         if (userRepository.existsByEmail(request.email) || userRepository.existsByNickName(request.nickName)) {
             throw AlreadyUserException
         }
