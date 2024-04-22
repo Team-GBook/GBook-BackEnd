@@ -35,7 +35,7 @@ class UserSignUpService(
             throw AlreadyUserException
         }
 
-        if (mailRepository.existsByEmail(request.email) && !mailFacade.getByMail(request.email).isChecked) {
+        if (!mailRepository.existsByEmail(request.email) || !mailFacade.getByMail(request.email).isChecked) {
             throw InvalidMailException
         }
     }
