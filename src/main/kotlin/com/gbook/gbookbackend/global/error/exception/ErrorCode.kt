@@ -12,7 +12,7 @@ enum class ErrorCode(
     TOKEN_INVALID(401, "Token Invalid"),
 
     NOT_FOUND_MAIL(404, "Not Found Mail"),
-    NOT_FOUND_USER(404, "NOT FOUND USER"),
+    NOT_FOUND_USER(404, "Not Found User"),
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),

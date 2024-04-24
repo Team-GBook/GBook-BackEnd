@@ -53,7 +53,7 @@ class JwtTokenProvider(
         return Jwts.builder()
                 .setSubject(email)
                 .claim("type", type)
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.secret)
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.secretKey)
                 .setExpiration(Date(System.currentTimeMillis() + expired * 1000))
                 .setIssuedAt(Date())
                 .compact()
@@ -71,14 +71,14 @@ class JwtTokenProvider(
     private fun getClaims(token: String): Claims {
         return try {
             Jwts.parser()
-                    .setSigningKey(jwtProperties.secret)
+                    .setSigningKey(jwtProperties.secretKey)
                     .parseClaimsJws(token)
                     .body
         } catch (e: ExpiredJwtException) {
-            throw TokenExpiredException.EXCPETION
+            throw TokenExpiredException
         } catch (e: Exception) {
             e.printStackTrace()
-            throw TokenInvalidException.EXCPETION
+            throw TokenInvalidException
         }
     }
 
