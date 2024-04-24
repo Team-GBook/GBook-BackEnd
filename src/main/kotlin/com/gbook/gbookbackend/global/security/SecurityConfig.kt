@@ -1,6 +1,8 @@
 package com.gbook.gbookbackend.global.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.gbook.gbookbackend.global.config.FilterConfig
+import com.gbook.gbookbackend.global.security.jwt.JwtTokenProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -11,7 +13,8 @@ import org.springframework.security.web.SecurityFilterChain
 
 @EnableWebSecurity
 class SecurityConfig(
-    private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper,
+    private val jwtTokenProvider: JwtTokenProvider
 ) {
 
     @Bean
@@ -31,7 +34,7 @@ class SecurityConfig(
             .antMatchers("/**").permitAll()
             .anyRequest().permitAll()
 
-            .and().apply(FilterConfig(objectMapper))
+            .and().apply(FilterConfig(objectMapper, jwtTokenProvider))
             .and().build()
     }
 

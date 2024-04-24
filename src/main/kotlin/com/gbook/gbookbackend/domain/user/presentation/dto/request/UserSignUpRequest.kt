@@ -1,4 +1,4 @@
-package com.gbook.gbookbackend.domain.user.presentation.dto
+package com.gbook.gbookbackend.domain.user.presentation.dto.request
 
 import com.gbook.gbookbackend.domain.user.domain.Genre
 import javax.validation.constraints.NotBlank
