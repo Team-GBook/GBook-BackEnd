@@ -6,9 +6,10 @@ import com.gbook.gbookbackend.domain.user.domain.repository.UserRepository
 import com.gbook.gbookbackend.domain.user.exception.AlreadyUserException
 import com.gbook.gbookbackend.domain.user.exception.InvalidMailException
 import com.gbook.gbookbackend.domain.user.facade.MailFacade
-import com.gbook.gbookbackend.domain.user.presentation.dto.UserSignUpRequest
+import com.gbook.gbookbackend.domain.user.presentation.dto.request.UserSignUpRequest
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserSignUpService(
@@ -17,6 +18,7 @@ class UserSignUpService(
     private val mailRepository: MailRepository,
     private val mailFacade: MailFacade,
 ) {
+    @Transactional
     fun execute(request: UserSignUpRequest) {
         validUser(request)
         userRepository.save(
