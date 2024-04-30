@@ -8,9 +8,8 @@ import javax.validation.constraints.Size
 
 data class UserSignUpRequest(
         @field:NotBlank(message = "email는 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
-        @field:Size(min = 5, max = 15, message = "email는 5자 이상 15자 이하여야 합니다.")
         @field:Pattern(
-                regexp = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\$",
+                regexp = "[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$",
                 message = "이메일 형식에 맞지 않습니다."
         )
         var email: String,
