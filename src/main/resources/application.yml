@@ -16,9 +16,6 @@ spring:
         format_sql: ${SQL_FORMAT:true}
     open-in-view: false
 
-  jackson:
-    property-naming-strategy: SNAKE_CASE
-
   lifecycle:
     timeout-per-shutdown-phase: 30s
 
@@ -40,6 +37,9 @@ spring:
           starttls:
             enable: true
             required: true
+
+aladin:
+  api-key: ${ALADIN_API_KEY}
 
 jwt:
   secret-key: ${JWT_SECRET_KEY:he436dhh$^JhYHRHh5379p8t5ry655%U&^KJ%JU%U$}
