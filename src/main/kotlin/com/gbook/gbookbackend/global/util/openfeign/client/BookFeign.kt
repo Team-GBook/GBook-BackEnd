@@ -7,16 +7,15 @@ import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestParam
 
 @FeignClient(name = "BookFeign", url = "http://www.aladin.co.kr/ttb/api")
-interface GithubFeign {
+interface BookFeign {
     @GetMapping("/ItemSearch.aspx")
     fun searchBookList(
-            @RequestParam("QueryType") queryType: String = "Keyword",
             @RequestParam("Query") query: String
     ): GetBookListResponse
 
     @GetMapping("/ItemList.aspx")
     fun getBestSellerList(
-            @RequestParam("QueryType") queryType: String = "Bestseller"
+            @RequestParam("QueryType") queryType: String
     ): GetBookListResponse
 
 }

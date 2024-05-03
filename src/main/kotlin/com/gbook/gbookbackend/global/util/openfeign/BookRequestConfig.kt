@@ -15,6 +15,7 @@ class BookRequestConfig(
         return RequestInterceptor { template: RequestTemplate ->
             template.query("TTBKey", apiKey)
             template.query("OUTPUT", "JS")
+            template.header("Content Type", "application/json")
         }
     }
 }
