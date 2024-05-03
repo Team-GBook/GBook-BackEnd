@@ -22,7 +22,7 @@ data class UserSignUpRequest(
         var password: String,
 
         @field:NotBlank(message = "nick_name은 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
-        @field:Size(max = 5, message = "nick_name은 15자 이하여야 합니다.")
+        @field:Size(max = 15, message = "nick_name은 15자 이하여야 합니다.")
         var nickName: String,
 
         @field:NotNull(message = "genre는 Null를 허용하지 않습니다.")
