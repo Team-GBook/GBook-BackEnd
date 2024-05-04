@@ -24,7 +24,7 @@ class BookRequestConfig(
     fun requestInterceptor(): RequestInterceptor {
         return RequestInterceptor { template: RequestTemplate ->
             template.query("TTBKey", apiKey)
-            template.query("output", "JS")
+            template.query("output", "js")
         }
     }
 }

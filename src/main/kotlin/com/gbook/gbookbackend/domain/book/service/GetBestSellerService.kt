@@ -13,7 +13,7 @@ class GetBestSellerService(
     private val bookFeign: BookFeign
 ) {
     @Transactional
-    fun execute(): GetBookListResponse {
-        return bookFeign.getBestSellerList(queryType = "Bestseller")
+    fun execute(start: Int): GetBookListResponse {
+        return bookFeign.getBestSellerList(queryType = "Bestseller", start =  start, version = 20131101, searchTarget = "Book")
     }
 }

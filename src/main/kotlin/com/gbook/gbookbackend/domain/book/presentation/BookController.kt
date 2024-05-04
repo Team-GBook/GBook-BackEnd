@@ -29,8 +29,8 @@ class BookController(
 
     @ResponseStatus(OK)
     @GetMapping("/bestSeller")
-    fun getBestSeller(): GetBookListResponse {
-        return getBestSellerService.execute()
+    fun getBestSeller(@RequestParam("start") start: Int): GetBookListResponse {
+        return getBestSellerService.execute(start = start)
     }
 
     @ResponseStatus(OK)

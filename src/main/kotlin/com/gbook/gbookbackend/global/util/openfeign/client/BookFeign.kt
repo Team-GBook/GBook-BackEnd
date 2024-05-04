@@ -16,6 +16,9 @@ interface BookFeign {
 
     @GetMapping("/ItemList.aspx")
     fun getBestSellerList(
-            @RequestParam("QueryType") queryType: String
+            @RequestParam("QueryType") queryType: String,
+            @RequestParam("start") start: Int,
+            @RequestParam("Version") version: Int,
+            @RequestParam("SearchTarget") searchTarget: String,
     ): GetBookListResponse
 }

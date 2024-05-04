@@ -1,6 +1,7 @@
 package com.gbook.gbookbackend.global.util.openfeign.client.dto
 
 data class GetBookListResponse(
+    val totalResults: Int,
     val item: List<GetBookResponse>
 )
 
