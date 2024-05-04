@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam
 
 @FeignClient(name = "BookFeign", url = "http://www.aladin.co.kr/ttb/api")
 interface BookFeign {
-    @GetMapping("/ItemSearch.aspx")
+    @GetMapping("/ItemSearch.aspx", consumes = ["application/json"])
     fun searchBookList(
-            @RequestParam("Query") query: String
-    ): GetBookListResponse
+            @RequestParam("Query") query: String,
+            @RequestParam("start") start: Int,
+    ): String
 
     @GetMapping("/ItemList.aspx")
     fun getBestSellerList(
             @RequestParam("QueryType") queryType: String
     ): GetBookListResponse
-
 }
