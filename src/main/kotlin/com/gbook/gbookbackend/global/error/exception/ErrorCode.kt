@@ -7,15 +7,21 @@ enum class ErrorCode(
     PASSWORD_MISMATCED(400, "Password Mis Matched"),
     INVALID_CODE(400, "Invalid Code"),
     INVALID_MAIL(400, "Invalid Mail"),
+    FEIGN_BAD_REQUEST(400, "Feign Bad Request"),
 
     TOKEN_EXPIRED(401, "Token Expired"),
     TOKEN_INVALID(401, "Token Invalid"),
+    FEIGN_UNAUTHORIZED(401, "Feign Unauthorized"),
+
+    FEIGN_FORBIDDEN(403, "Feign Forbidden"),
 
     NOT_FOUND_MAIL(404, "Not Found Mail"),
     NOT_FOUND_USER(404, "Not Found User"),
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),
+
+    FEIGN_TOKEN_EXPIRED(419, "Feign Token Expired"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 }

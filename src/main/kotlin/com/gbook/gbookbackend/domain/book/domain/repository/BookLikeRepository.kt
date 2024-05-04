@@ -8,4 +8,5 @@ import java.util.UUID
 interface BookLikeRepository : JpaRepository<BookLike, UUID> {
     fun deleteByIsbnAndUser(isbn: String, user: User)
     fun existsByIsbnAndUser(isbn: String, user: User): Boolean
+    fun countByIsbn(isbn: String): Int
 }
