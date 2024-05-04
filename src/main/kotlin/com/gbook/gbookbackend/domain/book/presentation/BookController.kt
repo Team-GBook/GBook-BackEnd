@@ -3,7 +3,7 @@ package com.gbook.gbookbackend.domain.book.presentation
 import com.gbook.gbookbackend.domain.book.service.GetBestSellerService
 import com.gbook.gbookbackend.domain.book.service.LikeBookService
 import com.gbook.gbookbackend.domain.book.service.SearchBookListService
-import com.gbook.gbookbackend.global.util.openfeign.client.dto.GetBookListResponse
+import com.gbook.gbookbackend.global.util.openfeign.client.dto.GetAladinBookListResponse
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.GetMapping
@@ -29,13 +29,13 @@ class BookController(
 
     @ResponseStatus(OK)
     @GetMapping("/bestSeller")
-    fun getBestSeller(@RequestParam("start") start: Int): GetBookListResponse {
+    fun getBestSeller(@RequestParam("start") start: Int): GetAladinBookListResponse {
         return getBestSellerService.execute(start = start)
     }
 
     @ResponseStatus(OK)
     @GetMapping("/search/{keyword}")
-    fun searchBookList(@PathVariable keyword: String, @RequestParam("start") start: Int): GetBookListResponse {
+    fun searchBookList(@PathVariable keyword: String, @RequestParam("start") start: Int): GetAladinBookListResponse {
         return searchBookListService.execute(keyword = keyword, start = start)
     }
 }

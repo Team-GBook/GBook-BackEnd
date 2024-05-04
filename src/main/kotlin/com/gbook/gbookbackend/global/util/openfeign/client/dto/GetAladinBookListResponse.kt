@@ -1,11 +1,11 @@
 package com.gbook.gbookbackend.global.util.openfeign.client.dto
 
-data class GetBookListResponse(
+data class GetAladinBookListResponse(
     val totalResults: Int,
-    val item: List<GetBookResponse>
+    val item: List<AladinBookElement>
 )
 
-data class GetBookResponse(
+data class AladinBookElement(
     val title: String,
     val author: String,
     val isbn: String,
