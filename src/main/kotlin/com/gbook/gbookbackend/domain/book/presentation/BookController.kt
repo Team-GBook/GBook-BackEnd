@@ -1,5 +1,6 @@
 package com.gbook.gbookbackend.domain.book.presentation
 
+import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListResponse
 import com.gbook.gbookbackend.domain.book.service.GetBestSellerService
 import com.gbook.gbookbackend.domain.book.service.LikeBookService
 import com.gbook.gbookbackend.domain.book.service.SearchBookListService
@@ -29,13 +30,13 @@ class BookController(
 
     @ResponseStatus(OK)
     @GetMapping("/bestSeller")
-    fun getBestSeller(@RequestParam("start") start: Int): GetAladinBookListResponse {
+    fun getBestSeller(@RequestParam("start") start: Int): GetBookListResponse {
         return getBestSellerService.execute(start = start)
     }
 
     @ResponseStatus(OK)
     @GetMapping("/search/{keyword}")
-    fun searchBookList(@PathVariable keyword: String, @RequestParam("start") start: Int): GetAladinBookListResponse {
+    fun searchBookList(@PathVariable keyword: String, @RequestParam("start") start: Int): GetBookListResponse {
         return searchBookListService.execute(keyword = keyword, start = start)
     }
 }
