@@ -16,8 +16,13 @@ class User(
     var nickName: String,
 
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
-    val genre: Genre,
+    var genre: Genre,
 
     @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
     val profile: String
-): BaseUUIDEntity()
+): BaseUUIDEntity() {
+    fun updateUserInfo(nickName: String, genre: Genre) {
+        this.nickName = nickName
+        this.genre = genre
+    }
+}
