@@ -15,9 +15,11 @@ class UpdateUserService(
     @Transactional
     fun execute(request: UpdateUserRequest) {
         val user = userFacade.getCurrentUser()
+
         if (userRepository.existsByNickName(request.nickName)) {
             throw AlreadyUserException
         }
+
         user.updateUserInfo(request.nickName, request.genre)
     }
 }
