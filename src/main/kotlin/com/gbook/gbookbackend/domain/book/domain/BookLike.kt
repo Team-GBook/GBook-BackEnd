@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne
 
 @Entity(name = "tbl_book_like")
 class BookLike(
-    @Column(columnDefinition = "CHAR(13)", unique = true)
+    @Column(columnDefinition = "CHAR(13)")
     val isbn: String,
     user: User,
 ) : BaseUUIDEntity() {
