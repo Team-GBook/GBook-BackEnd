@@ -19,6 +19,10 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 30s
 
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
   redis:
     host: ${REDIS_HOST:localhost}
     port: ${REDIS_PORT:6379}
