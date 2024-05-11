@@ -1,4 +1,4 @@
-package com.gbook.gbookbackend.global.util.openfeign
+package com.gbook.gbookbackend.global.utils.openfeign
 
 import feign.codec.ErrorDecoder
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean

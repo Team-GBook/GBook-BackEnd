@@ -1,10 +1,10 @@
-package com.gbook.gbookbackend.global.util.openfeign
+package com.gbook.gbookbackend.global.utils.openfeign
 
 import com.gbook.gbookbackend.global.exception.InternalServerError
-import com.gbook.gbookbackend.global.util.openfeign.client.exception.FeignBadRequestException
-import com.gbook.gbookbackend.global.util.openfeign.client.exception.FeignForbiddenException
-import com.gbook.gbookbackend.global.util.openfeign.client.exception.FeignTokenExpiredException
-import com.gbook.gbookbackend.global.util.openfeign.client.exception.FeignUnAuthorizedException
+import com.gbook.gbookbackend.global.utils.openfeign.client.exception.FeignBadRequestException
+import com.gbook.gbookbackend.global.utils.openfeign.client.exception.FeignForbiddenException
+import com.gbook.gbookbackend.global.utils.openfeign.client.exception.FeignTokenExpiredException
+import com.gbook.gbookbackend.global.utils.openfeign.client.exception.FeignUnAuthorizedException
 import feign.FeignException
 import feign.Response
 import feign.codec.ErrorDecoder
