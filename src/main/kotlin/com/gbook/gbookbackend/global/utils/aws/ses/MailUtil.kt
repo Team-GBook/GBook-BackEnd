@@ -1,4 +1,4 @@
-package com.gbook.gbookbackend.global.util.ses
+package com.gbook.gbookbackend.global.utils.aws.ses
 
 import com.gbook.gbookbackend.domain.user.domain.Mail
 import com.gbook.gbookbackend.domain.user.domain.repository.MailRepository

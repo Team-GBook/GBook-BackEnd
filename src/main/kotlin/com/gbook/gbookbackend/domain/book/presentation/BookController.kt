@@ -4,7 +4,6 @@ import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListR
 import com.gbook.gbookbackend.domain.book.service.GetBestSellerService
 import com.gbook.gbookbackend.domain.book.service.LikeBookService
 import com.gbook.gbookbackend.domain.book.service.SearchBookListService
-import com.gbook.gbookbackend.global.util.openfeign.client.dto.GetAladinBookListResponse
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.GetMapping

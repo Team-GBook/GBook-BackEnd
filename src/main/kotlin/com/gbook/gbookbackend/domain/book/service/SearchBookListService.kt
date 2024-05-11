@@ -5,8 +5,8 @@ import com.gbook.gbookbackend.domain.book.domain.repository.ReviewRepository
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.BookElement
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListResponse
 import com.gbook.gbookbackend.domain.user.facade.UserFacade
-import com.gbook.gbookbackend.global.util.openfeign.client.BookFeign
-import com.gbook.gbookbackend.global.util.openfeign.client.dto.GetAladinBookListResponse
+import com.gbook.gbookbackend.global.utils.openfeign.client.BookFeign
+import com.gbook.gbookbackend.global.utils.openfeign.client.dto.GetAladinBookListResponse
 import com.google.gson.GsonBuilder
 import com.google.gson.stream.JsonReader
 import org.springframework.stereotype.Service

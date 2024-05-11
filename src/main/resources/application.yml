@@ -45,3 +45,17 @@ jwt:
   secret-key: ${JWT_SECRET_KEY:he436dhh$^JhYHRHh5379p8t5ry655%U&^KJ%JU%U$}
   access_exp: ${JWT_ACCESS_EXP:7200}
   refresh_exp: ${JWT_REFRESH_EXP:86400}
+
+cloud:
+  aws:
+    s3:
+      prefix: ${AWS_S3_PREFIX:/}
+      bucket: ${AWS_S3_BUCKET:gbook-bucket/}
+      base-image-url: ${AWS_S3_URL:/}
+    region:
+      static: ${AWS_S3_REGION:ap-northeast-2}
+    stack:
+      auto: false
+    credentials:
+      access-key: ${AWS_S3_ACCESS}
+      secret-key: ${AWS_S3_SECRET}

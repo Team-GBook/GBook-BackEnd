@@ -1,4 +1,4 @@
-package com.gbook.gbookbackend.global.util.openfeign.client.dto
+package com.gbook.gbookbackend.global.utils.openfeign.client.dto
 
 data class GetAladinBookListResponse(
     val totalResults: Int,

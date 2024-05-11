@@ -8,6 +8,7 @@ enum class ErrorCode(
     INVALID_CODE(400, "Invalid Code"),
     INVALID_MAIL(400, "Invalid Mail"),
     FEIGN_BAD_REQUEST(400, "Feign Bad Request"),
+    BAD_FILE_EXTENSION(400,"Bad File Extension"),
 
     TOKEN_EXPIRED(401, "Token Expired"),
     TOKEN_INVALID(401, "Token Invalid"),

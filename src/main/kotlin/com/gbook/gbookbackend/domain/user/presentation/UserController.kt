@@ -6,6 +6,7 @@ import com.gbook.gbookbackend.domain.user.presentation.dto.request.UserSignUpReq
 import com.gbook.gbookbackend.domain.user.presentation.dto.response.TokenResponse
 import com.gbook.gbookbackend.domain.user.service.MailService
 import com.gbook.gbookbackend.domain.user.service.UpdateUserService
+import com.gbook.gbookbackend.domain.user.service.UploadProfileService
 import com.gbook.gbookbackend.domain.user.service.UserLoginService
 import com.gbook.gbookbackend.domain.user.service.UserSignUpService
 import org.springframework.http.HttpStatus.CREATED
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.multipart.MultipartFile
 import javax.validation.Valid
 
 @RequestMapping("/users")
@@ -26,7 +29,8 @@ class UserController(
     private val userSignUpService: UserSignUpService,
     private val mailService: MailService,
     private val userLoginService: UserLoginService,
-    private val updateUserService: UpdateUserService
+    private val updateUserService: UpdateUserService,
+    private val uploadProfileService: UploadProfileService
 ) {
     @ResponseStatus(CREATED)
     @PostMapping("/signup")
@@ -56,5 +60,11 @@ class UserController(
     @PatchMapping
     fun updateUserInfo(@RequestBody @Valid request: UpdateUserRequest) {
         updateUserService.execute(request)
+    }
+
+    @ResponseStatus(NO_CONTENT)
+    @PatchMapping("/profile")
+    fun uploadProfile(@RequestPart file: MultipartFile) {
+        uploadProfileService.execute(file)
     }
 }

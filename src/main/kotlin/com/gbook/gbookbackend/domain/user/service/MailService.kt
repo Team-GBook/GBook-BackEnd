@@ -3,7 +3,7 @@ package com.gbook.gbookbackend.domain.user.service
 import com.gbook.gbookbackend.domain.user.exception.AlreadyCheckedMailException
 import com.gbook.gbookbackend.domain.user.exception.InvalidCodeException
 import com.gbook.gbookbackend.domain.user.facade.MailFacade
-import com.gbook.gbookbackend.global.util.ses.MailUtil
+import com.gbook.gbookbackend.global.utils.aws.ses.MailUtil
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

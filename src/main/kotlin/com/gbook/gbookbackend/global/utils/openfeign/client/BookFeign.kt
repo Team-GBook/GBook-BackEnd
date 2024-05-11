@@ -1,6 +1,6 @@
-package com.gbook.gbookbackend.global.util.openfeign.client
+package com.gbook.gbookbackend.global.utils.openfeign.client
 
-import com.gbook.gbookbackend.global.util.openfeign.client.dto.GetAladinBookListResponse
+import com.gbook.gbookbackend.global.utils.openfeign.client.dto.GetAladinBookListResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
