@@ -21,6 +21,7 @@ enum class ErrorCode(
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),
+    ALREADY_REVIEW(409, "Already Review"),
 
     FEIGN_TOKEN_EXPIRED(419, "Feign Token Expired"),
 
