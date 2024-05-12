@@ -1,7 +1,7 @@
 package com.gbook.gbookbackend.domain.book.service
 
 import com.gbook.gbookbackend.domain.book.domain.repository.BookLikeRepository
-import com.gbook.gbookbackend.domain.book.domain.repository.ReviewRepository
+import com.gbook.gbookbackend.domain.review.domain.repository.ReviewRepository
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.BookElement
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListResponse
 import com.gbook.gbookbackend.domain.user.facade.UserFacade
