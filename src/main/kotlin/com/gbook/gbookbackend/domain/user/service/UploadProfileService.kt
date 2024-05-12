@@ -8,8 +8,8 @@ import org.springframework.web.multipart.MultipartFile
 
 @Service
 class UploadProfileService(
-    val userFacade: UserFacade,
-    val s3Utils: S3Utils
+    private val userFacade: UserFacade,
+    private val s3Utils: S3Utils
 ) {
     @Transactional
     fun execute(file: MultipartFile) {
