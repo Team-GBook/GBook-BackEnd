@@ -4,8 +4,8 @@ import com.gbook.gbookbackend.domain.book.presentation.dto.response.BookElement
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListResponse
 import com.gbook.gbookbackend.domain.book.service.GetBestSellerService
 import com.gbook.gbookbackend.domain.book.service.LikeBookService
-import com.gbook.gbookbackend.domain.book.service.SearchBookDetailService
-import com.gbook.gbookbackend.domain.book.service.SearchBookListService
+import com.gbook.gbookbackend.domain.book.service.QueryBookDetailService
+import com.gbook.gbookbackend.domain.book.service.QueryBookListService
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.GetMapping
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController
 class BookController(
     private val likeBookService: LikeBookService,
     private val getBestSellerService: GetBestSellerService,
-    private val searchBookListService: SearchBookListService,
-    private val searchBookDetailService: SearchBookDetailService
+    private val queryBookListService: QueryBookListService,
+    private val queryBookDetailService: QueryBookDetailService
 ) {
     @ResponseStatus(NO_CONTENT)
     @PutMapping("/like/{isbn}")
@@ -39,12 +39,12 @@ class BookController(
     @ResponseStatus(OK)
     @GetMapping("/search/{keyword}")
     fun searchBookList(@PathVariable keyword: String, @RequestParam("start") start: Int): GetBookListResponse {
-        return searchBookListService.execute(keyword = keyword, start = start)
+        return queryBookListService.execute(keyword = keyword, start = start)
     }
 
     @ResponseStatus(OK)
     @GetMapping("/details/{isbn}")
     fun searchBookDetail(@PathVariable isbn: String): BookElement {
-        return searchBookDetailService.execute(isbn = isbn)
+        return queryBookDetailService.execute(isbn = isbn)
     }
 }

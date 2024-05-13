@@ -1,5 +1,6 @@
 package com.gbook.gbookbackend.domain.book.service
 
+import com.gbook.gbookbackend.domain.book.exception.BookNotFoundException
 import com.gbook.gbookbackend.domain.book.facade.BookFacade
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListResponse
 import com.gbook.gbookbackend.domain.user.facade.UserFacade
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class SearchBookListService(
+class QueryBookListService(
     private val bookFeign: BookFeign,
     private val userFacade: UserFacade,
     private val bookFacade: BookFacade
@@ -21,6 +22,10 @@ class SearchBookListService(
             start = start,
             version = 20131101
         )
+
+        if (response.item == null) {
+            throw BookNotFoundException
+        }
 
         return GetBookListResponse(
             totalPage = response.totalResults / 10,

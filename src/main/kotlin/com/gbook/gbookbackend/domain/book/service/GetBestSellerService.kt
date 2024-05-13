@@ -1,8 +1,7 @@
 package com.gbook.gbookbackend.domain.book.service
 
-import com.gbook.gbookbackend.domain.book.domain.repository.BookLikeRepository
+import com.gbook.gbookbackend.domain.book.exception.BookNotFoundException
 import com.gbook.gbookbackend.domain.book.facade.BookFacade
-import com.gbook.gbookbackend.domain.review.domain.repository.ReviewRepository
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.GetBookListResponse
 import com.gbook.gbookbackend.domain.user.facade.UserFacade
 import com.gbook.gbookbackend.global.utils.openfeign.client.BookFeign
@@ -13,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional
 class GetBestSellerService(
     private val bookFeign: BookFeign,
     private val userFacade: UserFacade,
-    private val bookLikeRepository: BookLikeRepository,
-    private val reviewRepository: ReviewRepository,
-    private val bookFacade: BookFacade,
+    private val bookFacade: BookFacade
 ) {
     @Transactional
     fun execute(start: Int): GetBookListResponse {
@@ -26,6 +23,10 @@ class GetBestSellerService(
             version = 20131101,
             searchTarget = "Book"
         )
+
+        if (response.item == null) {
+            throw BookNotFoundException
+        }
 
         return GetBookListResponse(
             totalPage = response.totalResults / 10,

@@ -18,6 +18,7 @@ enum class ErrorCode(
 
     NOT_FOUND_MAIL(404, "Not Found Mail"),
     NOT_FOUND_USER(404, "Not Found User"),
+    NOT_FOUND_BOOK(404, "Not Found Book"),
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),
