@@ -10,5 +10,6 @@ data class AladinBookElement(
     val author: String,
     val isbn: String,
     val cover: String,
-    val publisher: String
+    val publisher: String,
+    val description: String
 )

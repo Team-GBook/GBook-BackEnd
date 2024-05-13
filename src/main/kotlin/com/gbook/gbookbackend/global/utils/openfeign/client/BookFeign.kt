@@ -9,15 +9,23 @@ import org.springframework.web.bind.annotation.RequestParam
 interface BookFeign {
     @GetMapping("/ItemSearch.aspx", consumes = ["application/json"])
     fun searchBookList(
-            @RequestParam("Query") query: String,
-            @RequestParam("start") start: Int,
-    ): String
+        @RequestParam("Query") query: String,
+        @RequestParam("start") start: Int,
+        @RequestParam("Version") version: Int,
+    ): GetAladinBookListResponse
 
     @GetMapping("/ItemList.aspx")
     fun getBestSellerList(
-            @RequestParam("QueryType") queryType: String,
-            @RequestParam("start") start: Int,
-            @RequestParam("Version") version: Int,
-            @RequestParam("SearchTarget") searchTarget: String,
+        @RequestParam("QueryType") queryType: String,
+        @RequestParam("start") start: Int,
+        @RequestParam("Version") version: Int,
+        @RequestParam("SearchTarget") searchTarget: String,
+    ): GetAladinBookListResponse
+
+    @GetMapping("ItemLookUp.aspx")
+    fun searchBookDetail(
+        @RequestParam("Version") version: Int,
+        @RequestParam("itemIdType") itemIdType: String,
+        @RequestParam("ItemId") itemId: String
     ): GetAladinBookListResponse
 }

@@ -11,6 +11,7 @@ data class BookElement(
     val isbn: String,
     val cover: String,
     val publisher: String,
+    val description: String,
     val reviewCount: Int,
     val likeCount:Int,
     val isLiked: Boolean,
