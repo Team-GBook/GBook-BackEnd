@@ -4,7 +4,7 @@ enum class ErrorCode(
     val status: Int,
     val message: String
 ) {
-    PASSWORD_MISMATCED(400, "Password Mis Matched"),
+    PASSWORD_MIS_MATCHED(400, "Password Mis Matched"),
     INVALID_CODE(400, "Invalid Code"),
     INVALID_MAIL(400, "Invalid Mail"),
     FEIGN_BAD_REQUEST(400, "Feign Bad Request"),
@@ -19,6 +19,7 @@ enum class ErrorCode(
     NOT_FOUND_MAIL(404, "Not Found Mail"),
     NOT_FOUND_USER(404, "Not Found User"),
     NOT_FOUND_BOOK(404, "Not Found Book"),
+    NOT_FOUND_REVIEW(404, "Not Found Review"),
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),

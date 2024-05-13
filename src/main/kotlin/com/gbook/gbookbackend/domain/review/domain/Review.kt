@@ -15,13 +15,13 @@ class Review(
     val isbn: String,
 
     @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
-    val review: String,
+    var review: String,
 
     @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
-    val reconstruction: String,
+    var reconstruction: String,
 
     @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
-    val analysis: String,
+    var analysis: String,
 
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
     var genre: Genre,
@@ -32,4 +32,11 @@ class Review(
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)", nullable = false)
     var user = user
         protected set
+
+    fun updateReview(review: String, reconstruction: String, analysis: String, genre: Genre) {
+        this.review = review
+        this.reconstruction = reconstruction
+        this.analysis = analysis
+        this.genre = genre
+    }
 }
