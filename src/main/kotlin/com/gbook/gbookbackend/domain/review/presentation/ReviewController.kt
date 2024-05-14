@@ -2,12 +2,15 @@ package com.gbook.gbookbackend.domain.review.presentation
 
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateReviewRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateReviewRequest
+import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReviewListResponse
 import com.gbook.gbookbackend.domain.review.service.CreateReviewService
 import com.gbook.gbookbackend.domain.review.service.DeleteReviewService
+import com.gbook.gbookbackend.domain.review.service.QueryReviewListService
 import com.gbook.gbookbackend.domain.review.service.UpdateReviewService
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -23,7 +26,8 @@ import javax.validation.Valid
 class ReviewController(
     private val createReviewService: CreateReviewService,
     private val updateReviewService: UpdateReviewService,
-    private val deleteReviewService: DeleteReviewService
+    private val deleteReviewService: DeleteReviewService,
+    private val queryReviewListService: QueryReviewListService
 ) {
     @ResponseStatus(CREATED)
     @PostMapping("/{isbn}")
@@ -41,5 +45,10 @@ class ReviewController(
     @DeleteMapping("/{isbn}")
     fun deleteReview(@PathVariable isbn: String) {
         deleteReviewService.execute(isbn)
+    }
+
+    @GetMapping("/{isbn}")
+    fun searchReviewList(@PathVariable isbn: String): QueryReviewListResponse {
+        return queryReviewListService.execute(isbn)
     }
 }
