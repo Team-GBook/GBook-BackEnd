@@ -10,5 +10,5 @@ interface ReviewRepository : JpaRepository<Review, UUID> {
     fun countByIsbn(isbn: String): Int
     fun existsByIsbnAndUser(isbn: String, user: User): Boolean
     fun findByIsbnAndUser(isbn: String, user: User): Review?
-    fun deleteByIsbnAndUser(isbn: String, user: User)
+    fun findAllByIsbn(isbn: String): List<Review>
 }
