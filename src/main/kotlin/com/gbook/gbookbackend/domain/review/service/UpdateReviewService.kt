@@ -16,6 +16,6 @@ class UpdateReviewService(
     fun execute(isbn: String, request: UpdateReviewRequest) {
         val user = userFacade.getCurrentUser()
         val review = reviewRepository.findByIsbnAndUser(isbn, user) ?: throw ReviewNotFoundException
-        review.updateReview(request.review, request.reconstruction, request.analysis, request.genre)
+        review.updateReview(request.title, request.review, request.reconstruction, request.analysis, request.genre)
     }
 }

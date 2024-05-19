@@ -3,6 +3,7 @@ package com.gbook.gbookbackend.domain.review.domain
 import com.gbook.gbookbackend.domain.user.domain.Genre
 import com.gbook.gbookbackend.domain.user.domain.User
 import com.gbook.gbookbackend.global.entity.BaseUUIDEntity
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.FetchType.LAZY
@@ -13,6 +14,9 @@ import javax.persistence.ManyToOne
 class Review(
     @Column(columnDefinition = "CHAR(10)", unique = true, nullable = false)
     val isbn: String,
+
+    @Column(columnDefinition = "VARCHAR(50)", nullable = false)
+    var title: String,
 
     @Column(columnDefinition = "VARCHAR(2000)", nullable = false)
     var review: String,
@@ -26,6 +30,9 @@ class Review(
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
     var genre: Genre,
 
+    @Column(columnDefinition = "DATE", nullable = false)
+    val createdAt: LocalDate,
+
     user: User,
 ) : BaseUUIDEntity() {
     @ManyToOne(fetch = LAZY)
@@ -33,7 +40,8 @@ class Review(
     var user = user
         protected set
 
-    fun updateReview(review: String, reconstruction: String, analysis: String, genre: Genre) {
+    fun updateReview(title: String, review: String, reconstruction: String, analysis: String, genre: Genre) {
+        this.title = title
         this.review = review
         this.reconstruction = reconstruction
         this.analysis = analysis
