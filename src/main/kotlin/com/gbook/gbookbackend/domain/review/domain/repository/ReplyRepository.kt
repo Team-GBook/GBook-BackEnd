@@ -4,4 +4,6 @@ import com.gbook.gbookbackend.domain.review.domain.Reply
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.UUID
 
-interface ReplyRepository : JpaRepository<Reply, UUID>
+interface ReplyRepository : JpaRepository<Reply, UUID> {
+    fun findReplyById(id: UUID): Reply?
+}

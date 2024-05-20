@@ -25,4 +25,8 @@ class Comment(
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)", nullable = false)
     var user = user
         protected set
+
+    fun updateContent(content: String) {
+        this.content = content
+    }
 }

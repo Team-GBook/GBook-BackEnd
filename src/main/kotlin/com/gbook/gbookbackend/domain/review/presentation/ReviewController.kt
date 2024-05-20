@@ -3,6 +3,8 @@ package com.gbook.gbookbackend.domain.review.presentation
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateCommentRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateReplyRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateReviewRequest
+import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateCommentRequest
+import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateReplyRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateReviewRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReviewListResponse
 import com.gbook.gbookbackend.domain.review.service.CreateCommentService
@@ -10,6 +12,8 @@ import com.gbook.gbookbackend.domain.review.service.CreateReplyService
 import com.gbook.gbookbackend.domain.review.service.CreateReviewService
 import com.gbook.gbookbackend.domain.review.service.DeleteReviewService
 import com.gbook.gbookbackend.domain.review.service.QueryReviewListService
+import com.gbook.gbookbackend.domain.review.service.UpdateCommentService
+import com.gbook.gbookbackend.domain.review.service.UpdateReplyService
 import com.gbook.gbookbackend.domain.review.service.UpdateReviewService
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.NO_CONTENT
@@ -34,6 +38,8 @@ class ReviewController(
     private val queryReviewListService: QueryReviewListService,
     private val createCommentService: CreateCommentService,
     private val createReplyService: CreateReplyService,
+    private val updateCommentService: UpdateCommentService,
+    private val updateReplyService: UpdateReplyService,
 ) {
     @ResponseStatus(CREATED)
     @PostMapping("/{isbn}")
@@ -64,9 +70,21 @@ class ReviewController(
         createCommentService.execute(id, request)
     }
 
+    @ResponseStatus(NO_CONTENT)
+    @PatchMapping("/comment/{comment-id}")
+    fun updateComment(@PathVariable("comment-id") id: UUID, @RequestBody @Valid request: UpdateCommentRequest) {
+        updateCommentService.execute(id, request)
+    }
+
     @ResponseStatus(CREATED)
     @PostMapping("/reply/{comment-id}")
     fun createCReply(@PathVariable("comment-id") id: UUID, @RequestBody @Valid request: CreateReplyRequest) {
         createReplyService.execute(id, request)
+    }
+
+    @ResponseStatus(NO_CONTENT)
+    @PatchMapping("/reply/{reply-id}")
+    fun updateReply(@PathVariable("reply-id") id: UUID, @RequestBody @Valid request: UpdateReplyRequest) {
+        updateReplyService.execute(id, request)
     }
 }
