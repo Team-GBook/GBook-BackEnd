@@ -1,8 +1,6 @@
 package com.gbook.gbookbackend.domain.review.service
 
-import com.gbook.gbookbackend.domain.review.domain.repository.CommentRepository
 import com.gbook.gbookbackend.domain.review.domain.repository.ReplyRepository
-import com.gbook.gbookbackend.domain.review.exception.CommentNotFoundException
 import com.gbook.gbookbackend.domain.review.exception.ForbiddenUserException
 import com.gbook.gbookbackend.domain.review.exception.ReplyNotFoundException
 import com.gbook.gbookbackend.domain.user.facade.UserFacade

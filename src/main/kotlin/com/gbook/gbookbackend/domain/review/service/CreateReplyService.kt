@@ -2,13 +2,9 @@ package com.gbook.gbookbackend.domain.review.service
 
 import com.gbook.gbookbackend.domain.review.domain.Comment
 import com.gbook.gbookbackend.domain.review.domain.Reply
-import com.gbook.gbookbackend.domain.review.domain.Review
 import com.gbook.gbookbackend.domain.review.domain.repository.CommentRepository
 import com.gbook.gbookbackend.domain.review.domain.repository.ReplyRepository
-import com.gbook.gbookbackend.domain.review.domain.repository.ReviewRepository
 import com.gbook.gbookbackend.domain.review.exception.CommentNotFoundException
-import com.gbook.gbookbackend.domain.review.exception.ReviewNotFoundException
-import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateCommentRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateReplyRequest
 import com.gbook.gbookbackend.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service

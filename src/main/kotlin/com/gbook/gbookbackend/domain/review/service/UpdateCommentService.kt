@@ -19,7 +19,7 @@ class UpdateCommentService(
         val user = userFacade.getCurrentUser()
         val comment = commentRepository.findCommentById(id) ?: throw CommentNotFoundException
 
-        if (comment.user == user) {
+        if (comment.user != user) {
             throw ForbiddenUserException
         }
 
