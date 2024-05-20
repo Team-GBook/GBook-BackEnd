@@ -9,7 +9,7 @@ import javax.persistence.FetchType.LAZY
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
-@Entity(name = "tbl_book_like")
+@Entity(name = "tbl_comment")
 class Comment(
     @Column(columnDefinition = "VARCHAR(1000)", nullable = false)
     var content: String,
