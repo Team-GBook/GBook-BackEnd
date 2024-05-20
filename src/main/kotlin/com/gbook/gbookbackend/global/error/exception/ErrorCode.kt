@@ -20,6 +20,7 @@ enum class ErrorCode(
     NOT_FOUND_USER(404, "Not Found User"),
     NOT_FOUND_BOOK(404, "Not Found Book"),
     NOT_FOUND_REVIEW(404, "Not Found Review"),
+    NOT_FOUND_COMMENT(404, "Not Found Comment"),
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),
