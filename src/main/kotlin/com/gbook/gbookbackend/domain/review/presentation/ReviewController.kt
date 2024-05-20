@@ -10,6 +10,8 @@ import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryRevie
 import com.gbook.gbookbackend.domain.review.service.CreateCommentService
 import com.gbook.gbookbackend.domain.review.service.CreateReplyService
 import com.gbook.gbookbackend.domain.review.service.CreateReviewService
+import com.gbook.gbookbackend.domain.review.service.DeleteCommentService
+import com.gbook.gbookbackend.domain.review.service.DeleteReplyService
 import com.gbook.gbookbackend.domain.review.service.DeleteReviewService
 import com.gbook.gbookbackend.domain.review.service.QueryReviewListService
 import com.gbook.gbookbackend.domain.review.service.UpdateCommentService
@@ -40,6 +42,8 @@ class ReviewController(
     private val createReplyService: CreateReplyService,
     private val updateCommentService: UpdateCommentService,
     private val updateReplyService: UpdateReplyService,
+    private val deleteCommentService: DeleteCommentService,
+    private val deleteReplyService: DeleteReplyService
 ) {
     @ResponseStatus(CREATED)
     @PostMapping("/{isbn}")
@@ -76,6 +80,12 @@ class ReviewController(
         updateCommentService.execute(id, request)
     }
 
+    @ResponseStatus(NO_CONTENT)
+    @DeleteMapping("/comment/{comment-id}")
+    fun deleteComment(@PathVariable("comment-id") id: UUID) {
+        deleteCommentService.execute(id)
+    }
+
     @ResponseStatus(CREATED)
     @PostMapping("/reply/{comment-id}")
     fun createCReply(@PathVariable("comment-id") id: UUID, @RequestBody @Valid request: CreateReplyRequest) {
@@ -86,5 +96,11 @@ class ReviewController(
     @PatchMapping("/reply/{reply-id}")
     fun updateReply(@PathVariable("reply-id") id: UUID, @RequestBody @Valid request: UpdateReplyRequest) {
         updateReplyService.execute(id, request)
+    }
+
+    @ResponseStatus(NO_CONTENT)
+    @DeleteMapping("/reply/{reply-id}")
+    fun deleteReply(@PathVariable("reply-id") id: UUID) {
+        deleteReplyService.execute(id)
     }
 }
