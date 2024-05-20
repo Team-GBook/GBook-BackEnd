@@ -7,6 +7,7 @@ import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateRevie
 import com.gbook.gbookbackend.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDate
 
 @Service
 class CreateReviewService(
@@ -24,10 +25,12 @@ class CreateReviewService(
         reviewRepository.save(
             Review(
                 isbn,
+                request.title,
                 request.review,
                 request.reconstruction,
                 request.analysis,
                 request.genre,
+                LocalDate.now(),
                 user
             )
         )

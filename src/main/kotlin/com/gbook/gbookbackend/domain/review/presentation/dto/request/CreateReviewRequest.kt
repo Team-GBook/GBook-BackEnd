@@ -7,15 +7,19 @@ import javax.validation.constraints.Size
 
 data class CreateReviewRequest(
     @field:NotBlank(message = "review는 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
-    @field:Size(max = 2000, message = "review는 15자 이하여야 합니다.")
+    @field:Size(max = 50, message = "title은 50자 이하여야 합니다.")
+    val title: String,
+
+    @field:NotBlank(message = "review는 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
+    @field:Size(max = 2000, message = "review는 2000자 이하여야 합니다.")
     val review: String,
 
     @field:NotBlank(message = "reconstruction은 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
-    @field:Size(max = 2000, message = "reconstruction은 15자 이하여야 합니다.")
+    @field:Size(max = 2000, message = "reconstruction은 2000자 이하여야 합니다.")
     val reconstruction: String,
 
     @field:NotBlank(message = "analysis는 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
-    @field:Size(max = 2000, message = "analysis는 15자 이하여야 합니다.")
+    @field:Size(max = 2000, message = "analysis는 2000자 이하여야 합니다.")
     val analysis: String,
 
     @field:NotNull(message = "genre는 Null를 허용하지 않습니다.")
