@@ -1,6 +1,5 @@
 package com.gbook.gbookbackend.domain.review.presentation.dto.response
 
-import com.gbook.gbookbackend.domain.user.domain.Genre
 import java.time.LocalDate
 
 data class QueryReviewListResponse(
