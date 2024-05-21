@@ -8,4 +8,5 @@ import java.util.UUID
 interface CommentRepository : JpaRepository<Comment, UUID> {
     fun countByReview(review: Review): Int
     fun findCommentById(id: UUID): Comment?
+    fun findAllByReview(review: Review): List<Comment>
 }

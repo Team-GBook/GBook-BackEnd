@@ -6,6 +6,8 @@ import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateRevie
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateCommentRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateReplyRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateReviewRequest
+import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryCommentListResponse
+import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReplyListResponse
 import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReviewListResponse
 import com.gbook.gbookbackend.domain.review.service.CreateCommentService
 import com.gbook.gbookbackend.domain.review.service.CreateReplyService
@@ -13,6 +15,8 @@ import com.gbook.gbookbackend.domain.review.service.CreateReviewService
 import com.gbook.gbookbackend.domain.review.service.DeleteCommentService
 import com.gbook.gbookbackend.domain.review.service.DeleteReplyService
 import com.gbook.gbookbackend.domain.review.service.DeleteReviewService
+import com.gbook.gbookbackend.domain.review.service.QueryCommentListService
+import com.gbook.gbookbackend.domain.review.service.QueryReplyListService
 import com.gbook.gbookbackend.domain.review.service.QueryReviewListService
 import com.gbook.gbookbackend.domain.review.service.UpdateCommentService
 import com.gbook.gbookbackend.domain.review.service.UpdateReplyService
@@ -43,7 +47,9 @@ class ReviewController(
     private val updateCommentService: UpdateCommentService,
     private val updateReplyService: UpdateReplyService,
     private val deleteCommentService: DeleteCommentService,
-    private val deleteReplyService: DeleteReplyService
+    private val deleteReplyService: DeleteReplyService,
+    private val queryCommentListService: QueryCommentListService,
+    private val queryReplyListService: QueryReplyListService,
 ) {
     @ResponseStatus(CREATED)
     @PostMapping("/{isbn}")
@@ -86,6 +92,11 @@ class ReviewController(
         deleteCommentService.execute(id)
     }
 
+    @GetMapping("/comment/{review-id}")
+    fun queryCommentList(@PathVariable("review-id") id: UUID): QueryCommentListResponse {
+        return queryCommentListService.execute(id)
+    }
+
     @ResponseStatus(CREATED)
     @PostMapping("/reply/{comment-id}")
     fun createCReply(@PathVariable("comment-id") id: UUID, @RequestBody @Valid request: CreateReplyRequest) {
@@ -102,5 +113,10 @@ class ReviewController(
     @DeleteMapping("/reply/{reply-id}")
     fun deleteReply(@PathVariable("reply-id") id: UUID) {
         deleteReplyService.execute(id)
+    }
+
+    @GetMapping("/reply/{comment-id}")
+    fun queryReplyList(@PathVariable("comment-id") id: UUID): QueryReplyListResponse {
+        return queryReplyListService.execute(id)
     }
 }
