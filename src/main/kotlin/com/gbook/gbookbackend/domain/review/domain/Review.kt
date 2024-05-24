@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne
 
 @Entity(name = "tbl_review")
 class Review(
-    @Column(columnDefinition = "CHAR(10)", unique = true, nullable = false)
+    @Column(columnDefinition = "CHAR(10)", nullable = false)
     val isbn: String,
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
