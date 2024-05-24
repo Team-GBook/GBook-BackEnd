@@ -1,7 +1,7 @@
 package com.gbook.gbookbackend.domain.review.service
 
-import com.gbook.gbookbackend.domain.comment.domain.repository.CommentRepository
 import com.gbook.gbookbackend.domain.review.domain.Review
+import com.gbook.gbookbackend.domain.review.domain.repository.CommentRepository
 import com.gbook.gbookbackend.domain.review.domain.repository.ReviewLikeRepository
 import com.gbook.gbookbackend.domain.review.domain.repository.ReviewRepository
 import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReviewListResponse

@@ -15,11 +15,14 @@ enum class ErrorCode(
     FEIGN_UNAUTHORIZED(401, "Feign Unauthorized"),
 
     FEIGN_FORBIDDEN(403, "Feign Forbidden"),
+    FORBIDDEN_USER(403, "Forbidden User"),
 
     NOT_FOUND_MAIL(404, "Not Found Mail"),
     NOT_FOUND_USER(404, "Not Found User"),
     NOT_FOUND_BOOK(404, "Not Found Book"),
     NOT_FOUND_REVIEW(404, "Not Found Review"),
+    NOT_FOUND_COMMENT(404, "Not Found Comment"),
+    NOT_FOUND_REPLY(404, "Not Found Reply"),
 
     ALREADY_USER(409, "Already User"),
     ALREADY_CHECKED_MAIL(409, "Already Checked Mail"),
