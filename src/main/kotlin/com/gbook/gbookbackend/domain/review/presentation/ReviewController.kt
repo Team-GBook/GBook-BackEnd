@@ -2,9 +2,11 @@ package com.gbook.gbookbackend.domain.review.presentation
 
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.CreateReviewRequest
 import com.gbook.gbookbackend.domain.review.presentation.dto.request.UpdateReviewRequest
+import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReviewDetailResponse
 import com.gbook.gbookbackend.domain.review.presentation.dto.response.QueryReviewListResponse
 import com.gbook.gbookbackend.domain.review.service.CreateReviewService
 import com.gbook.gbookbackend.domain.review.service.DeleteReviewService
+import com.gbook.gbookbackend.domain.review.service.QueryReviewDetailService
 import com.gbook.gbookbackend.domain.review.service.QueryReviewListService
 import com.gbook.gbookbackend.domain.review.service.UpdateReviewService
 import org.springframework.http.HttpStatus.CREATED
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import java.util.UUID
 import javax.validation.Valid
 
 @RequestMapping("/reviews")
@@ -26,7 +29,8 @@ class ReviewController(
     private val createReviewService: CreateReviewService,
     private val updateReviewService: UpdateReviewService,
     private val deleteReviewService: DeleteReviewService,
-    private val queryReviewListService: QueryReviewListService
+    private val queryReviewListService: QueryReviewListService,
+    private val queryReviewDetailService: QueryReviewDetailService
 ) {
     @ResponseStatus(CREATED)
     @PostMapping("/{isbn}")
@@ -49,5 +53,10 @@ class ReviewController(
     @GetMapping("/{isbn}")
     fun searchReviewList(@PathVariable isbn: String): QueryReviewListResponse {
         return queryReviewListService.execute(isbn)
+    }
+
+    @GetMapping("/details/{review-id}")
+    fun queryReviewDetails(@PathVariable("review-id") id: UUID): QueryReviewDetailResponse {
+        return queryReviewDetailService.execute(id)
     }
 }
