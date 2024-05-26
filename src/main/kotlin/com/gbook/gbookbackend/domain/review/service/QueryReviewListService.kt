@@ -27,6 +27,7 @@ class QueryReviewListService(
                 val likeCount = reviewLikeRepository.countById(it.id)
                 val commentCount = commentRepository.countByReview(it)
                 QueryReviewResponse(
+                    id = it.id,
                     isbn = it.isbn,
                     title = it.title,
                     user = it.user.nickName,
