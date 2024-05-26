@@ -18,6 +18,7 @@ class QueryReviewDetailService(
         val user = userFacade.getCurrentUser()
         val review = reviewRepository.findReviewById(id) ?: throw ReviewNotFoundException
         return QueryReviewDetailResponse(
+            review.id,
             review.isbn,
             review.title,
             review.user.nickName,
