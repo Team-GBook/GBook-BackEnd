@@ -68,7 +68,7 @@ class UserController(
 
     @ResponseStatus(NO_CONTENT)
     @PatchMapping("/profile")
-    fun uploadProfile(@RequestPart file: MultipartFile) {
+    fun uploadProfile(@RequestPart(name = "file") file: MultipartFile) {
         uploadProfileService.execute(file)
     }
 
