@@ -1,6 +1,7 @@
 package com.gbook.gbookbackend.domain.review.service
 
 import com.gbook.gbookbackend.domain.review.domain.repository.CommentRepository
+import com.gbook.gbookbackend.domain.review.domain.repository.ReplyRepository
 import com.gbook.gbookbackend.domain.review.domain.repository.ReviewRepository
 import com.gbook.gbookbackend.domain.review.exception.ReviewNotFoundException
 import com.gbook.gbookbackend.domain.review.presentation.dto.response.CommentElement
@@ -13,6 +14,7 @@ import java.util.UUID
 class QueryCommentListService(
     private val reviewRepository: ReviewRepository,
     private val commentRepository: CommentRepository,
+    private val replyRepository: ReplyRepository
 ) {
     @Transactional(readOnly = true)
     fun execute(id: UUID): QueryCommentListResponse {
@@ -24,7 +26,8 @@ class QueryCommentListService(
                 CommentElement(
                     it.id,
                     it.user.nickName,
-                    it.content
+                    it.content,
+                    replyRepository.countAllByComment(it)
                 )
             }
         )

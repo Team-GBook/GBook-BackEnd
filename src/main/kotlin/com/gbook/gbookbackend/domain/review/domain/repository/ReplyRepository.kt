@@ -8,4 +8,5 @@ import java.util.UUID
 interface ReplyRepository : JpaRepository<Reply, UUID> {
     fun findReplyById(id: UUID): Reply?
     fun findAllByComment(comment: Comment): List<Reply>
+    fun countAllByComment(comment: Comment): Int
 }

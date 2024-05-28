@@ -9,5 +9,6 @@ data class QueryCommentListResponse(
 data class CommentElement(
     val id: UUID,
     val username: String,
-    val content: String
+    val content: String,
+    val replyCount: Int
 )
