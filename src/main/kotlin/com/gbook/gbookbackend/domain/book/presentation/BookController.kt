@@ -6,6 +6,7 @@ import com.gbook.gbookbackend.domain.book.service.GetBestSellerService
 import com.gbook.gbookbackend.domain.book.service.LikeBookService
 import com.gbook.gbookbackend.domain.book.service.QueryBookDetailService
 import com.gbook.gbookbackend.domain.book.service.QueryBookListService
+import com.gbook.gbookbackend.domain.book.service.QueryLikeBookListService
 import com.gbook.gbookbackend.domain.book.service.QueryRecommendBookService
 import com.gbook.gbookbackend.domain.book.service.QueryReadBookService
 import org.springframework.http.HttpStatus.NO_CONTENT
@@ -26,7 +27,8 @@ class BookController(
     private val queryBookListService: QueryBookListService,
     private val queryBookDetailService: QueryBookDetailService,
     private val queryRecommendBookService: QueryRecommendBookService,
-    private val queryReadBookService: QueryReadBookService
+    private val queryReadBookService: QueryReadBookService,
+    private val queryLikeBookListService: QueryLikeBookListService
 ) {
     @ResponseStatus(NO_CONTENT)
     @PutMapping("/like/{isbn}")
@@ -60,7 +62,12 @@ class BookController(
     
     @ResponseStatus(OK)
     @GetMapping("/read")
-    fun searchBookDetail(): List<BookElement> {
+    fun queryReadBookList(): GetBookListResponse {
         return queryReadBookService.execute()
+    }
+    @ResponseStatus(OK)
+    @GetMapping("/like")
+    fun queryLikeBookList(): GetBookListResponse {
+        return queryLikeBookListService.execute()
     }
 }
