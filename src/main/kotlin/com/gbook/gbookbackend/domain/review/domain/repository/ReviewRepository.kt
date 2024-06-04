@@ -1,6 +1,7 @@
 package com.gbook.gbookbackend.domain.review.domain.repository
 
 import com.gbook.gbookbackend.domain.review.domain.Review
+import com.gbook.gbookbackend.domain.user.domain.Genre
 import com.gbook.gbookbackend.domain.user.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.Optional
@@ -12,5 +13,6 @@ interface ReviewRepository : JpaRepository<Review, UUID> {
     fun findByIsbnAndUser(isbn: String, user: User): Review?
     fun findAllByIsbn(isbn: String): List<Review>
     fun findReviewById(id: UUID): Review?
+    fun findAllByGenre(genre: Genre): List<Review>
     fun findAllByUser(user: User): List<Review>
 }
