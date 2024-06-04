@@ -1,5 +1,6 @@
 package com.gbook.gbookbackend.domain.book.service
 
+import com.gbook.gbookbackend.domain.book.domain.repository.BookLikeRepository
 import com.gbook.gbookbackend.domain.book.exception.BookNotFoundException
 import com.gbook.gbookbackend.domain.book.facade.BookFacade
 import com.gbook.gbookbackend.domain.book.presentation.dto.response.BookElement
@@ -11,17 +12,17 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class QueryReadBookService(
+class QueryLikeBookListService(
     private val userFacade: UserFacade,
-    private val reviewRepository: ReviewRepository,
+    private val bookLikeRepository: BookLikeRepository,
     private val bookFeign: BookFeign,
     private val bookFacade: BookFacade
 ) {
     @Transactional
     fun execute(): GetBookListResponse {
         val user = userFacade.getCurrentUser()
-        val reviews = reviewRepository.findAllByUser(user)
-        val books = reviews.map {
+        val likes = bookLikeRepository.findAllByUser(user)
+        val books = likes.map {
             bookFeign.searchBookDetail(
                 version = 20131101,
                 itemIdType = "ISBN",
