@@ -12,4 +12,5 @@ interface ReviewRepository : JpaRepository<Review, UUID> {
     fun findByIsbnAndUser(isbn: String, user: User): Review?
     fun findAllByIsbn(isbn: String): List<Review>
     fun findReviewById(id: UUID): Review?
+    fun findAllByUser(user: User): List<Review>
 }
