@@ -6,9 +6,11 @@ import com.gbook.gbookbackend.domain.book.service.GetBestSellerService
 import com.gbook.gbookbackend.domain.book.service.LikeBookService
 import com.gbook.gbookbackend.domain.book.service.QueryBookDetailService
 import com.gbook.gbookbackend.domain.book.service.QueryBookListService
+import com.gbook.gbookbackend.domain.book.service.QueryGenreBooksService
 import com.gbook.gbookbackend.domain.book.service.QueryLikeBookListService
 import com.gbook.gbookbackend.domain.book.service.QueryRecommendBookService
 import com.gbook.gbookbackend.domain.book.service.QueryReadBookService
+import com.gbook.gbookbackend.domain.user.domain.Genre
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.GetMapping
@@ -28,7 +30,8 @@ class BookController(
     private val queryBookDetailService: QueryBookDetailService,
     private val queryRecommendBookService: QueryRecommendBookService,
     private val queryReadBookService: QueryReadBookService,
-    private val queryLikeBookListService: QueryLikeBookListService
+    private val queryLikeBookListService: QueryLikeBookListService,
+    private val queryGenreBooksService: QueryGenreBooksService
 ) {
     @ResponseStatus(NO_CONTENT)
     @PutMapping("/like/{isbn}")
@@ -69,5 +72,11 @@ class BookController(
     @GetMapping("/like")
     fun queryLikeBookList(): GetBookListResponse {
         return queryLikeBookListService.execute()
+    }
+
+    @ResponseStatus(OK)
+    @GetMapping
+    fun queryGenreBookList(@RequestParam("genre") genre: Genre): GetBookListResponse {
+        return queryGenreBooksService.execute(genre)
     }
 }
