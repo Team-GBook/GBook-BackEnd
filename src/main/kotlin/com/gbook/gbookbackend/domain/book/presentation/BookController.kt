@@ -75,7 +75,7 @@ class BookController(
     }
 
     @ResponseStatus(OK)
-    @GetMapping
+    @GetMapping("/genre")
     fun queryGenreBookList(@RequestParam("genre") genre: Genre): GetBookListResponse {
         return queryGenreBooksService.execute(genre)
     }
